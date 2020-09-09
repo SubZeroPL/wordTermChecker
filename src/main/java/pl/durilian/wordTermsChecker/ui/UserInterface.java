@@ -48,6 +48,9 @@ public class UserInterface extends JFrame {
     int prevLogListSize = 0;
     volatile Thread searchThread;
 
+    /*
+      Rozumiem, że UI to tylko dodatek, ale dobrze by było chociaż rozbić tego potworka na mniejsze części :)
+     */
     /**
      * <pre>
      * constructor for whole UI.
@@ -235,6 +238,7 @@ public class UserInterface extends JFrame {
                             textfieldCategory.getText(),
                             (String) comboBoxExamType.getSelectedItem(),
                             textfieldEmail.getText(),
+                            // dobrze jest starać się nie używać metod oznaczonych jako deprecated
                             textfieldPassword.getText(),
                             textfieldWirePusherID.getText(),
                             Integer.parseInt(textfieldPoolingTime.getText()),
@@ -309,6 +313,11 @@ public class UserInterface extends JFrame {
         testSuite.setTestClasses(new Class[]{WordTest.class});
         testSuite.addListener(new TestSuiteListener());
         testSuite.run();
+        /*
+            To nie jest dobry pomysł, Thread.stop() może powodować dziwne problemy. Lepiej zrobić jakąś globalną zmienną,
+            której wartość sprawdzamy w wątku i na jej podstawie zatrzymujemy.
+            A jeszcze lepiej było by stworzyć swoją klasę rozszerzającą Thread, która ma tą zmienną jako pole prywatne.
+         */
         searchThread.stop();
 
     }

@@ -9,6 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+/*
+    Tutaj można by to przerobić na singleton
+ */
 @Slf4j
 public class ConfigurationManager {
     private static final String SELENIDE_PREFIX = "selenide.";
@@ -17,6 +20,10 @@ public class ConfigurationManager {
 
     private static final Map<String, String> configuration = createConfiguration();
 
+    /*
+        Dobrze by było zrobić jakąś ogólną metodę dla getSelenideProperties, getWirePusherProperties, getTermCheckerProperties
+        (na wzór getValue) - powielanie kodu jest złe ;)
+     */
     /**
      * Loads properties from configuration that starts with SELENIDE_PREFIX
      *
