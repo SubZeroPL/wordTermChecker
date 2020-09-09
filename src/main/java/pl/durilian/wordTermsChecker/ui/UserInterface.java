@@ -233,7 +233,7 @@ public class UserInterface extends JFrame {
                         cities.add(textfieldCity3.getText());
                     }
 
-
+                    // jeśli i tak robimy z listy tablicę to nie trzeba przez stream
                     checkFreeTerms(cities.stream().toArray(String[]::new),
                             textfieldCategory.getText(),
                             (String) comboBoxExamType.getSelectedItem(),
@@ -343,6 +343,9 @@ public class UserInterface extends JFrame {
     private String[] loadCitiesForUI() {
         String[] citiesFromConfig = ConfigurationManager.getTermCheckerPropertyValue("cities").split(",");
         String[] citiesForUI = new String[3];
+        /*
+            Lepiej użyć Arrays.copyOf, przy okazji rozwiązujemy też problem, co jeśli miast w konfiguracji będzie więcej niż 4
+         */
         for (int i = 0; i < citiesFromConfig.length; i++) {
             citiesForUI[i] = citiesFromConfig[i];
         }

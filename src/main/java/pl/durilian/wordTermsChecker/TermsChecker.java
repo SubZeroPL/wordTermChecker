@@ -71,6 +71,7 @@ public class TermsChecker {
                 .start()
                 .login(account.getEmail(), account.getPassword())
                 .goToReservations();
+        // ta pętla jest niefajna, przydałby się mimo wszystko jakiś warunek stopu
         while (true) {
             for (String city : desiredExam.getCities()) {
                 reservationPage.goToAvailableTerms(city, desiredExam);

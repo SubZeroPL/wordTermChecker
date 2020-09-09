@@ -12,6 +12,7 @@ import static com.codeborne.selenide.Selenide.$;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class LoginPage extends AbstractBasePage<LoginPage> {
 
+    // można dorzucić final jeśli zmienna nie jest nigdzie modyfikowana i jeszcze private jeśli nie jest używana poza klasą
     static String URI = "/oauth2/login";
 
     //locators
